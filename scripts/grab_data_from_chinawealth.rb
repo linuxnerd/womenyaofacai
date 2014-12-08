@@ -41,6 +41,7 @@ res_hash['List'].each do |el|
     p "【产品起始日期】" + detail['cpqsrq']
     p "【预计终止日期】" + detail['cpyjzzrq']
     p "【产品期限】" + detail['cpqx'] + '天'
+    p "【期限类型】" + detail['qxms']
     p "【发行机构代码】" + detail['fxjgdm']
     p "【发行机构描述】" + detail['fxjgms']
     p "【募集币种】" + detail['mjbz']
@@ -48,7 +49,6 @@ res_hash['List'].each do |el|
     p "【募集结束日期】" + detail['mjjsrq']
     p "【开放周期起始日】" + detail['kfzqqsr']
     p "【开放周期结束日】" + detail['kfzqjsr']
-    p "【期限类型】" + detail['qxms']
     p "【产品收益类型】" + detail['cpsylx']
     p "【产品收益类型描述】" + detail['cpsylxms']
     p "【风险等级】" + detail['cpfxdj']
@@ -57,9 +57,37 @@ res_hash['List'].each do |el|
     p "【产品净值】" + detail['cpjz']
     p "【销售区域】" + detail['xsqy']
     p "【产品销售区域】" + detail['cpxsqy']
+
+    if Production.where(pid: detail['cpid']).take.nil?
+      Production.create!(
+        pid: detail['cpid'],
+        registration_code: detail['cpdjbm'],
+        description: detail['cpms'],
+        production_type: detail['cplxms'],
+        highest_yield: detail['yjkhzgnsyl'],
+        lowest_yield: detail['yjkhzdnsyl'],
+        real_yield: detail['dqsjsyl'],
+        starting_amount: detail['qdxsje'],
+        status: detail['cpztms'],
+        start_date: detail['cpqsrq'],
+        end_date: detail['cpyjzzrq'],
+        term: detail['cpqx'],
+        term_type: detail['qxms'],
+        issuer_code: detail['fxjgdm'],
+        issuer_name: detail['fxjgms'],
+        currency: detail['mjbz'],
+        collection_start_date: detail['mjqsrq'],
+        collection_end_date: detail['mjjsrq'],
+        incoming_type: detail['cpsylx'],
+        risk_level: detail['fxdjms'],
+        initial_value: detail['csjz'],
+        production_value: detail['cpjz'],
+        sales_area: detail['cpxsqy']
+      )
+    end
     sleep 10
-  rescue Exception
-    p el['cpid'] + '请求失败'
+  # rescue Exception
+  #   p el['cpid'] + '请求失败'
   end
 
 end
