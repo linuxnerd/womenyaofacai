@@ -22,8 +22,8 @@ res_hash['List'].each do |el|
 
   params = { cpid: el['cpid'], pagenum: '1' }
   # params = { cpid: '710622', pagenum: '1' }
-  res = Net::HTTP.post_form(URI.parse(BASE_URL), params)
   begin
+    res = Net::HTTP.post_form(URI.parse(BASE_URL), params)
     res_hash = JSON.parse(res.body)
     detail = res_hash['List'].first
 
@@ -84,10 +84,12 @@ res_hash['List'].each do |el|
         production_value: detail['cpjz'],
         sales_area: detail['cpxsqy']
       )
+      p "产品[" + detail['cpid'] + "]创建成功"
     end
     sleep 10
-  # rescue Exception
-  #   p el['cpid'] + '请求失败'
+  rescue Exception
+    p el['cpid'] + '请求失败，10秒后抓取下一条数据'
+    sleep 10
   end
 
 end
