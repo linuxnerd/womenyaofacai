@@ -8,6 +8,13 @@ Bundler.require(*Rails.groups)
 
 module Womenyaofacai
   class Application < Rails::Application
+    config.i18n.default_locale = "zh-CN"
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.assets.paths << Rails.root.join("vendor", "assets", "fonts")
+    config.assets.precompile << Proc.new { |path|
+      if path =~ /\.(eot|svg|ttf|woff)\z/
+          true
+      end
+    }
   end
 end
