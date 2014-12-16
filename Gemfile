@@ -8,7 +8,6 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
 
 # 表格
 gem "wice_grid", '3.4.2'
@@ -17,6 +16,14 @@ gem "wice_grid", '3.4.2'
 gem 'spreadsheet', '0.9.7'
 gem 'ruby-ole', '1.2.11.7'
 
-group :development do
+group :development, :test do
   gem 'sqlite3'
+end
+
+group :production do
+  gem 'mysql2', '0.3.15'
+end
+
+group :doc do
+  gem 'sdoc', '~> 0.4.0', require: false
 end
