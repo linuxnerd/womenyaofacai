@@ -78,7 +78,7 @@ res_hash['List'].each do |el|
         currency: detail['mjbz'],
         collection_start_date: detail['mjqsrq'],
         collection_end_date: detail['mjjsrq'],
-        incoming_type: detail['cpsylx'],
+        incoming_type: detail['cpsylxms'],
         risk_level: detail['fxdjms'],
         initial_value: detail['csjz'],
         production_value: detail['cpjz'],

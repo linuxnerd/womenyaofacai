@@ -5,4 +5,9 @@ class ProductionsController < ApplicationController
                     order: 'productions.start_date',
                     order_direction: 'desc')
   end
+
+  def show
+    @production = Production.find(params[:format])
+  end
+
 end

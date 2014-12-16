@@ -1,0 +1,47 @@
+<%= define_grid(@productions_grid, hide_csv_button: true) do |g|
+  g.blank_slate  do
+    '没有数据'
+  end
+
+  g.column name: '产品', attribute: 'description', detach_with_id: :description_id do |production|
+    link_to production.description, productions_path(production)
+  end
+
+  g.column name: '发行机构', attribute: 'issuer_name', detach_with_id: :issuer_name_id do |production|
+    production.issuer_name
+  end
+
+  g.column name: '预期最高收益率', attribute: 'highest_yield', detach_with_id: :highest_yield_id do |production|
+    if production.highest_yield.blank?
+      '--'
+    else
+      production.highest_yield + '%'
+    end
+  end
+
+  g.column name: '收益类型', attribute: 'incoming_type', detach_with_id: :incoming_type_id do |production|
+    production.incoming_type
+  end
+
+  g.column name: '起售金额', attribute: 'starting_amount', detach_with_id: :starting_amount_id do |production|
+    production.starting_amount + '元'
+  end
+
+  g.column name: '实际天数', attribute: 'term', detach_with_id: :term_id do |production|
+    production.term + '天'
+  end
+  g.column name: '风险等级', attribute: 'risk_level', detach_with_id: :risk_level_id do |production|
+    production.risk_level
+  end
+
+  g.column name: '募集日期', detach_with_id: :collection_date_id do |production|
+    production.collection_start_date + '-' + production.collection_end_date
+  end
+
+  g.column name: '存续期', detach_with_id: :date_id do |production|
+    production.start_date + '-' + production.end_date
+  end
+
+
+
+end -%>

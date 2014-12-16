@@ -1,0 +1,106 @@
+<div class="panel panel-default">
+  <div class="panel-heading"><%= @production.description %></div>
+  <div class="panel-body">
+    <div class='row'>
+      <div class='col-sm-6'>
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label class="col-sm-6 control-label">登记编码</label>
+            <div class="col-sm-6">
+              <p class="form-control-static"><%= @production.registration_code %></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-6 control-label">收益类型</label>
+            <div class="col-sm-6">
+              <p class="form-control-static"><%= @production.incoming_type %></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-6 control-label">运作模式</label>
+            <div class="col-sm-6">
+              <p class="form-control-static"><%= @production.production_type %></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-6 control-label">风险等级</label>
+            <div class="col-sm-6">
+              <p class="form-control-static"><%= @production.risk_level %></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-6 control-label">募集日期</label>
+            <div class="col-sm-6">
+              <p class="form-control-static"><%= @production.collection_start_date + ' - ' + @production.collection_end_date %></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-6 control-label">初始净值</label>
+            <div class="col-sm-6">
+              <p class="form-control-static"><%= @production.initial_value %></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-6 control-label">销售区域</label>
+            <div class="col-sm-6">
+              <p class="form-control-static"><%= @production.production_value %></p>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class='col-sm-6'>
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label class="col-sm-6 control-label">发行机构</label>
+            <div class="col-sm-6">
+              <p class="form-control-static"><%= @production.issuer_name %></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-6 control-label">期限类型</label>
+            <div class="col-sm-6">
+              <p class="form-control-static"><%= @production.term_type %></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-6 control-label">募集币种</label>
+            <div class="col-sm-6">
+              <p class="form-control-static"><%= @production.currency %></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-6 control-label">起点销售金额</label>
+            <div class="col-sm-6">
+              <p class="form-control-static"><%= @production.starting_amount %>元</p>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="col-sm-6 control-label">存续日期</label>
+            <div class="col-sm-6">
+              <p class="form-control-static"><%= @production.start_date + ' - ' + @production.end_date %></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-6 control-label">产品净值</label>
+            <div class="col-sm-6">
+              <p class="form-control-static"><%= @production.production_value %></p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <div class="panel-footer"><em>以上数据截止到前一工作日，实际数据信息以银行网点公布为准</em></div>
+</div>
+<div class='row'>
+  <div class='col-sm-4'></div>
+  <div class='col-sm-4'>
+    <%= link_to root_path, class: 'btn btn-primary btn-lg btn-block', role: 'button' do %>
+      <i class='glyphicon glyphicon-chevron-left'></i>
+      返回
+    <% end %>
+  </div>
+</div>
